@@ -15,9 +15,9 @@ export default function MainParticipant() {
   const screenShareParticipant = useScreenShareParticipant();
 
   const videoPriority =
-    (mainParticipant === selectedParticipant || mainParticipant === screenShareParticipant) &&
-    mainParticipant !== localParticipant
-      ? 'high'
+    mainParticipant === selectedParticipant || mainParticipant === screenShareParticipant
+      ? // mainParticipant !== localParticipant
+        'high'
       : null;
 
   return (
@@ -27,9 +27,9 @@ export default function MainParticipant() {
       <ParticipantTracks
         participant={mainParticipant}
         videoOnly
-        enableScreenShare={mainParticipant !== localParticipant}
+        enableScreenShare={true}
         videoPriority={videoPriority}
-        isLocalParticipant={mainParticipant === localParticipant}
+        isLocalParticipant={false}
       />
     </MainParticipantInfo>
   );
